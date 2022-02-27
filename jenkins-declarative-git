@@ -9,10 +9,6 @@ pipeline{
                 git credentialsId: 'github', url: 'https://github.com/stsagar/centralgit.git'
             }
         }
-        stage("Deploy"){
-            steps{
-                sh "mvn package"
-            }
-        }
+       
     }
 }
