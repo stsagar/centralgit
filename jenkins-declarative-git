@@ -1,7 +1,8 @@
 pipeline{
     agent any
+    
     environment{
-    PATH= "/usr/share/maven/bin:$PATH"
+        PATH= "/usr/share/maven/bin:$PATH"
     }
     stages{
         stage("Git Checkout"){
@@ -9,6 +10,10 @@ pipeline{
                 git credentialsId: 'github', url: 'https://github.com/stsagar/centralgit.git'
             }
         }
-       
+        stage("Maven Build"){
+            steps{
+                sh "mvn clean package"
+            }
+        }       
     }
 }
